@@ -28,11 +28,7 @@ class LinkedList {
     return size;
   }
   pop() {
-    let currentNode = this.head;
-    for (let i = 0; i < this.size() - 2; i++) {
-      currentNode = currentNode.nextNode;
-    }
-    currentNode.nextNode = null;
+    this.at(this.size() - 2).nextNode = null;
   }
   at(index) {
     let currentNode = this.head;
@@ -42,8 +38,9 @@ class LinkedList {
       currentNode = currentNode.nextNode;
       walked++;
     }
-    return currentNode.value;
+    return currentNode;
   }
+  contains(value) {}
 }
 
 class ListNode {
