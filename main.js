@@ -18,6 +18,15 @@ class LinkedList {
     const newNode = new ListNode(value, this.head);
     this.head = newNode;
   }
+  size() {
+    let size = 1;
+    let currentNode = this.head;
+    while (currentNode.nextNode !== null) {
+      size++;
+      currentNode = currentNode.nextNode;
+    }
+    return size;
+  }
   pop() {
     this.head = this.head.nextNode;
   }
@@ -33,4 +42,4 @@ class ListNode {
 const myList = new LinkedList("hello, world!", "goodbye, world!");
 myList.append("final goodbye, world!");
 myList.append("first hello, world!");
-console.log(myList.head);
+console.log(myList.size());
