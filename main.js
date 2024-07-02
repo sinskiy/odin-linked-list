@@ -40,7 +40,14 @@ class LinkedList {
     }
     return currentNode;
   }
-  contains(value) {}
+  contains(value) {
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      if (currentNode.value === value) return true;
+      currentNode = currentNode.nextNode;
+    }
+    return false;
+  }
 }
 
 class ListNode {
@@ -53,8 +60,8 @@ class ListNode {
 const myList = new LinkedList("hello, world!", "goodbye, world!");
 myList.append("final goodbye, world!");
 myList.prepend("first hello, world!");
-console.log(myList.at(3));
 myList.pop();
-console.log(myList.tail());
 myList.pop();
-console.log(myList.tail());
+console.log(myList.contains("doesn't contain"));
+myList.append("contains");
+console.log(myList.contains("contains"));
