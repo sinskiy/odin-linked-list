@@ -1,11 +1,18 @@
 class LinkedList {
-  constructor(headNode, tailValue) {
-    this.head = headNode;
-    this.tail = new ListNode(tailValue);
+  constructor(headValue, tailValue) {
+    const tail = tailValue ? new ListNode(tailValue, null) : null;
+    this.head = new ListNode(headValue ?? null, tail);
+  }
+  tail() {
+    let maybeTail = this.head;
+    while (maybeTail.nextNode !== null) {
+      maybeTail = maybeTail.nextNode;
+    }
+    return maybeTail;
   }
   append(value) {
     const newNode = new ListNode(value);
-    this.tail.nextNode = newNode;
+    this.tail().nextNode = newNode;
   }
   prepend(value) {
     const newNode = new ListNode(value, this.head);
@@ -22,3 +29,8 @@ class ListNode {
     this.nextNode = nextNode ?? null;
   }
 }
+
+const myList = new LinkedList("hello, world!", "goodbye, world!");
+myList.append("final goodbye, world!");
+myList.append("first hello, world!");
+console.log(myList.head);
