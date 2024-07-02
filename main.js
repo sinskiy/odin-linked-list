@@ -77,6 +77,13 @@ class LinkedList {
     if (!hasNextNodeInserted) return;
     hasNextNodeInserted.nextNode = newNode;
   }
+  removeAt(index) {
+    if (index === 0) {
+      this.head = this.head.nextNode;
+      return;
+    }
+    this.at(index - 1).nextNode = this.at(index + 1);
+  }
 }
 
 class ListNode {
@@ -93,4 +100,6 @@ myList.pop();
 myList.pop();
 myList.append("contains");
 myList.insertAt("second hello, world!", 0);
+console.log(myList.toString());
+myList.removeAt(3);
 console.log(myList.toString());
