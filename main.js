@@ -58,6 +58,16 @@ class LinkedList {
     }
     return null;
   }
+  toString() {
+    let currentNode = this.head;
+    let string = "";
+    while (currentNode !== null) {
+      string += `( ${currentNode.value} ) -> `;
+      currentNode = currentNode.nextNode;
+    }
+    string += "null";
+    return string;
+  }
 }
 
 class ListNode {
@@ -73,8 +83,4 @@ myList.prepend("first hello, world!");
 myList.pop();
 myList.pop();
 myList.append("contains");
-console.log(
-  myList.find("contains"),
-  myList.find("doesn't contain"),
-  myList.find("first hello, world!")
-);
+console.log(myList.toString());
