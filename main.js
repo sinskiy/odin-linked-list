@@ -48,6 +48,16 @@ class LinkedList {
     }
     return false;
   }
+  find(value) {
+    let currentNode = this.head;
+    let currentIndex = 0;
+    while (currentNode !== null) {
+      if (currentNode.value === value) return currentIndex;
+      currentNode = currentNode.nextNode;
+      currentIndex++;
+    }
+    return null;
+  }
 }
 
 class ListNode {
@@ -62,6 +72,9 @@ myList.append("final goodbye, world!");
 myList.prepend("first hello, world!");
 myList.pop();
 myList.pop();
-console.log(myList.contains("doesn't contain"));
 myList.append("contains");
-console.log(myList.contains("contains"));
+console.log(
+  myList.find("contains"),
+  myList.find("doesn't contain"),
+  myList.find("first hello, world!")
+);
