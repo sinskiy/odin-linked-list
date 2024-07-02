@@ -92,14 +92,3 @@ class ListNode {
     this.nextNode = nextNode ?? null;
   }
 }
-
-const myList = new LinkedList("hello, world!", "goodbye, world!");
-myList.append("final goodbye, world!");
-myList.prepend("first hello, world!");
-myList.pop();
-myList.pop();
-myList.append("contains");
-myList.insertAt("second hello, world!", 0);
-console.log(myList.toString());
-myList.removeAt(3);
-console.log(myList.toString());
