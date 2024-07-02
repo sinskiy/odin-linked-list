@@ -68,6 +68,15 @@ class LinkedList {
     string += "null";
     return string;
   }
+  insertAt(value, index) {
+    const newNode = new ListNode(value, this.head);
+    if (index === 0) {
+      this.head = newNode;
+    }
+    const hasNextNodeInserted = this.at(index - 1);
+    if (!hasNextNodeInserted) return;
+    hasNextNodeInserted.nextNode = newNode;
+  }
 }
 
 class ListNode {
@@ -83,4 +92,5 @@ myList.prepend("first hello, world!");
 myList.pop();
 myList.pop();
 myList.append("contains");
+myList.insertAt("second hello, world!", 0);
 console.log(myList.toString());
