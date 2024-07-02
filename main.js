@@ -28,7 +28,21 @@ class LinkedList {
     return size;
   }
   pop() {
-    this.head = this.head.nextNode;
+    let currentNode = this.head;
+    for (let i = 0; i < this.size() - 2; i++) {
+      currentNode = currentNode.nextNode;
+    }
+    currentNode.nextNode = null;
+  }
+  at(index) {
+    let currentNode = this.head;
+    let walked = 0;
+    while (walked !== index) {
+      if (!currentNode) return null;
+      currentNode = currentNode.nextNode;
+      walked++;
+    }
+    return currentNode.value;
   }
 }
 
@@ -41,5 +55,9 @@ class ListNode {
 
 const myList = new LinkedList("hello, world!", "goodbye, world!");
 myList.append("final goodbye, world!");
-myList.append("first hello, world!");
-console.log(myList.size());
+myList.prepend("first hello, world!");
+console.log(myList.at(3));
+myList.pop();
+console.log(myList.tail());
+myList.pop();
+console.log(myList.tail());
